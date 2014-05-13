@@ -8,18 +8,35 @@
 
 # 1. Pseudocode
 
-# What is the input?
-# What is the output? (i.e. What should the code return?)
-# What are the steps needed to solve the problem?
+#INPUT: An array of either all numbers or all strings
+#OUTPUT: The median value
+#STEPS:
+# Sort the array from lowest to highest
+# IF array is odd, return the number in the array whose
+# Index number matches half of the array length - 0.5
+# IF array is even, return the average of those two numbers in the array whose
+# Index number is equal to half of the array length OR equal to half of the array length - 1 
 
 
 # 2. Initial Solution
-
+def median(array)
+	if array.length % 2 != 0
+		array.sort!.(array.length/2-0.5)
+	else array.sort!.((array.length/2 + array.length/2+1)/2)
+	end
+end
 
 
 
 # 3. Refactored Solution
-
+def median(array)
+	array.sort!
+	array_half = array.length/2
+	if array.length % 2 != 0
+		array[(array_half-0.5)]
+	else (array[array_half] + array[array_half-1])/2
+	end
+end
 
 
 # 4. Reflection 
