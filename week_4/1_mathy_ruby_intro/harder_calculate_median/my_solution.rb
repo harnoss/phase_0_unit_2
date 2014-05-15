@@ -4,7 +4,7 @@
 # include it in this file. Also make sure everything that isn't code
 # is commented in the file.  
 
-# I worked on this challenge [by myself, with: ].
+# I worked on this challenge with: Jared Chevalier
 
 # 1. Pseudocode
 
@@ -30,13 +30,13 @@ end
 
 # 3. Refactored Solution
 def median(array)
-	array.sort!
-	array_half = array.length/2
-	if array.length % 2 != 0
-		array[(array_half-0.5)]
-	else (array[array_half] + array[array_half-1])/2
+  	array.sort!
+  	half = array.length / 2
+  if array.length.odd?
+		return (array[half  + 0.5])
+		else
+		return ((array[half] + array[half -1]) / 2.0)
 	end
 end
-
 
 # 4. Reflection 

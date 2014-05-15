@@ -1,7 +1,7 @@
 # U2.W4: Refactor Cipher Solution
 
 
-# I worked on this challenge [by myself, with: ].
+# I worked on this challenge by myself
 
 
 # 1. Solution
@@ -11,23 +11,23 @@
 # Try implementing the code without it. 
 
 def translate_to_cipher(sentence)
-    alphabet = ('a'..'z').to_a
-    cipher = Hash[alphabet.zip(alphabet.rotate(4))]
+    alphabet = ('a'..'z').to_a # -> Creates an array with all the letters of the alphabet
+    cipher = Hash[alphabet.zip(alphabet.rotate(4))] # -> Creates an hash with elements of alphabet as keys and values, values are "rotated by 4"
     spaces = ["@", "#", "$", "%", "^", "&", "*"]
     
     original_sentence = sentence.downcase
     encoded_sentence = []
-    original_sentence.each_char do |element|
+    original_sentence.each_char do |element| # ->
       if cipher.include?(element)
-        encoded_sentence << cipher[element]
+        encoded_sentence << cipher[element] # ->
       elsif element == ' '
-        encoded_sentence << spaces.sample
+        encoded_sentence << spaces.sample # ->
       else 
         encoded_sentence << element
       end
      end
     
-    return encoded_sentence.join
+    return encoded_sentence.join # ->
 end
 
 

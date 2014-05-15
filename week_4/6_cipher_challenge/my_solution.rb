@@ -73,18 +73,48 @@ end
 
 # Your Refactored Solution
 
+def north_korean_cipher(coded_message)
+  input = coded_message.downcase.split("")
+  decoded_sentence = []
+  array_abc = []
+  ("a".."z").each {|letter| array_abc.push(letter)}
+  array_other = ["@", "#", "$", "%", "^", "&", "*"]
+
+  input.each do |x|
+    if array_abc.include?(x)
+      hash = Hash[array_abc.map.with_index.to_a]
+      index_number = hash[x]-4
+      decoded_letter = array_abc[index_number]
+      decoded_sentence << decoded_letter
+    elsif array_other.include?(x)
+      decoded_sentence << " "
+    else
+      decoded_sentence << x
+    end
+  end
+  decoded_sentence = decoded_sentence.join("")
+  return decoded_sentence 
+end
 
 
-
+#Small cipher mashine to change the SHIFT of letters
+def create_cipher(shift_of_letters)
+  array_abc = []
+  ("a".."z").each {|letter| array_abc.push(letter)}
+  cipher_hash = Hash[array_abc.map.with_index.to_a]
+  cipher_hash.each {|k, v| cipher_hash[k] = array_abc[v.to_i-shift_of_letters]}
+end
 
 # Driver Code:
-p north_korean_cipher("m^aerx%e&gsoi!") == "i want a coke!" #This is driver code and should print true
+puts north_korean_cipher("m^aerx%e&gsoi!") == "i want a coke!" #This is driver code and should print true
 # Find out what Kim Jong Un is saying below and turn it into driver code as well. Driver Code statements should always return "true"
-p north_korean_cipher("syv@tistpi$iex#xli*qswx*hipmgmsyw*erh*ryxvmxmsyw%jsshw^jvsq^syv#1000000#tvsjmxefpi$jevqw.")
-p north_korean_cipher("syv%ryoiw#evi#liph^xskixliv@fc^kveti-jpezsvih@xsjjii.*hsr'x%xipp&xli#yw!")
-p north_korean_cipher("mj^csy&qeoi^sri*qmwxeoi,%kir.*vm@csrk-kmp,&csy^ampp*fi&vitpegih*fc@hirrmw&vshqer.")
-p north_korean_cipher("ribx^wxst:$wsyxl%osvie,$xlir$neter,#xlir%xli%asvph!")
-p north_korean_cipher("ger^wsqifshc*nywx^kix^qi&10000*fekw@sj$gssp%vergl@hsvmxsw?")
+puts north_korean_cipher("syv@tistpi$iex#xli*qswx*hipmgmsyw*erh*ryxvmxmsyw%jsshw^jvsq^syv#1000000#tvsjmxefpi$jevqw.")
+puts north_korean_cipher("syv%ryoiw#evi#liph^xskixliv@fc^kveti-jpezsvih@xsjjii.*hsr'x%xipp&xli#yw!")
+puts north_korean_cipher("mj^csy&qeoi^sri*qmwxeoi,%kir.*vm@csrk-kmp,&csy^ampp*fi&vitpegih*fc@hirrmw&vshqer.")
+puts north_korean_cipher("ribx^wxst:$wsyxl%osvie,$xlir$neter,#xlir%xli%asvph!")
+puts north_korean_cipher("ger^wsqifshc*nywx^kix^qi&10000*fekw@sj$gssp%vergl@hsvmxsw?")
 
 # Reflection
- 
+# Great learning around how to transform arrays into hashes
+# Refactoring sometimes better to start at 0
+# Break it down into key functions and pseudocode the best way to do it
