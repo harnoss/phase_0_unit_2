@@ -1,15 +1,11 @@
 # U2.W4: Cipher Challenge
 
 
-# I worked on this challenge with: .
-
-
+# I worked on this challenge with: Arik Gadye
 
 # 1. Solution
 # Write your comments on what each thing is doing. 
 # If you have difficulty, go into IRB and play with the methods.
-
-
 
 def north_korean_cipher(coded_message)
   input = coded_message.downcase.split("") # Check out this method in IRB to see how it works! Also refer to the ruby docs.
@@ -115,6 +111,6 @@ puts north_korean_cipher("ribx^wxst:$wsyxl%osvie,$xlir$neter,#xlir%xli%asvph!")
 puts north_korean_cipher("ger^wsqifshc*nywx^kix^qi&10000*fekw@sj$gssp%vergl@hsvmxsw?")
 
 # Reflection
-# Great learning around how to transform arrays into hashes
-# Refactoring sometimes better to start at 0
-# Break it down into key functions and pseudocode the best way to do it
+# That was great learning around how to transform arrays into hashes
+# When refactoring I feel that it's sometimes better to start at 0 with pseudcode, then 
+# going through the existing code one by one
