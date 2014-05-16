@@ -1,6 +1,14 @@
 #population density is number of people per square mile as of 2012
 #this data is updated every year with estimates from a 10 year census 
 
+## Release 2: Analyze `state_data`
+#Take a look at the `state_data` file. What is going on with this hash? 
+#What does it have in it? (HINT: There are two different syntax used for hashes here. What's the difference?)
+#Its a hash within a hash, a nested hash (= "nasty" hash)
+#The first hash {"Alabama" => ...} is called by STATE_DATA["Alabama"]
+#the second hash within the first hash needs different syntaxt: after the STATE_DATA["Alabama"] 
+#it needs to be called up with [:population_density]
+
 
 STATE_DATA = {  "Alabama" => {population_density: 94.65, population: 4822023, region: 5, regional_spread: 3},
                 "Alaska" => {population_density: 1.1111, population: 731449, region: 10, regional_spread: 9},
