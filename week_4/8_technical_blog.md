@@ -43,3 +43,61 @@ Share your blog on the google+ community under "Blog Posts!" Read others blogs. 
 
 Post a comment on their community post to start a discussion or give some feedback.  Consider sharing your blog post on Reddit as well.
 
+# Map
+
+According to the book "The well-grounded Rubyist", the map method is one of the most powerful and important enumerable or collection operations available in Ruby. There are 3 important things to know about map:
+It always returns an array
+The size of the array is always the same size as the original enumerable
+Its elements consist of the result of calling the code block on each element in the original object
+
+Mapping our [1,2,3] array through a block that multiplies each
+item by 10 results in the new array [10,20,30].
+
+>> array = [1,2,3]
+=> [1, 2, 3]
+>> array.map {|n| n * 10 }
+=> [10, 20, 30]
+
+Thus, #map is similar to #each except for one crucial point: #each
+returns its receiver, but map returns a new array. 
+
+
+#Cycle
+
+#cycle gives you a way to loop ("cycle") through an array several times (as specified by an integer).
+You can use it to decide how many each-like runs you want to perform consecutively.
+
+Here's a great example from the Book "The well-grounded Rubyist" on playing cards:
+
+class PlayingCard
+	SUITS = %w{ clubs diamonds hearts spades }
+	RANKS = %w{ 2 3 4 5 6 7 8 9 10 J Q K A }
+
+	class Deck
+		attr_reader :cards
+	
+	def initialize(n=1)
+	@cards = []
+	SUITS.cycle(n) do |s|
+		RANKS.cycle(1) do |r|
+		@cards << "#{r} of #{s}"
+		end
+	end
+	end
+end
+end
+
+#Group_by 
+
+If you want to count how often each word turns up in a text, Group_by will be what you need.
+Let's start with an example:
+
+>> text = %w{ a bb cc dd eee fff gggg }
+=> ["a", "bb", "cc", "dd", "eee", "fff", "gggg"]
+>> text.group_by {|word| count.size }
+=> {1=>["a"], 2=>["bb", "cc", "dd"], 3=>["eee", "fff"], 4=>[gggg]}
+
+The block {|word| word.size } returns an integer for each word. The hash
+returned by the entire group_by operation is keyed to the various sizes (1, 2, 3, 4), and
+the values are arrays containing all the strings from the original array that are of the
+size represented by the respective keys.
