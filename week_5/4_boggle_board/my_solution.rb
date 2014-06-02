@@ -55,6 +55,7 @@ puts get_row(1) ==  ["i", "o", "d", "t"]
 # Based on part 1 that seemed easy. No major things to reflect on here for me
 
 
+<<<<<<< HEAD
 #-------------------------------------------------------------------------------
 
 # Part 3: Now write a method that takes a column number and returns all the elements in the column.
@@ -89,3 +90,5 @@ puts $boggle_board[2][3] != "x"
 # Worked out well then, no need for extensive research
 # I did find .transpose on ruby docs though, pretty impressive thing
 # So i used that one for refactoring
+=======
+>>>>>>> upstream/master

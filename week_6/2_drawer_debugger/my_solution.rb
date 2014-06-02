@@ -25,7 +25,7 @@ def close
 @open = false
 end 
 
-def add_item
+def add_item(item)
 @contents << item
 end
 
@@ -35,6 +35,7 @@ end
 
 def dump  # what should this method return?
 puts "Your drawer is empty."
+@contents = []
 end
 
 def view_contents
@@ -42,9 +43,10 @@ puts "The drawer contains:"
 @contents.each {|silverware| puts "- " + silverware.type }
 end
 
+end
 
 class Silverware
-attr_reader :type
+attr_reader :type, :clean
 
 # Are there any more methods needed in this class?
 
@@ -56,6 +58,11 @@ end
 def eat
 puts "eating with the #{type}"
 @clean = false
+end
+
+def clean_silverware
+	@clean = true
+	puts "silverware is clean now!"
 end
 
 end
@@ -93,10 +100,23 @@ fork.eat
 # puts fork.clean
 
 # DRIVER TESTS GO BELOW THIS LINE
+def assert
+	raise "Error!" unless yield
+end
 
+drawer1 = Drawer.new
+knife = Silverware.new("knife")
+fork = Silverware.new("fork")
+spoon = Silverware.new("spoon")
 
+assert { knife.type == "knife" }
+assert { drawer1.open == true }
+assert { drawer1.add_item(knife) == "knife added to drawer." }
 
-
+assert { drawer1.dump == [] }
 
 
 # 5. Reflection 
+# Very fun exercise! Tracing down the errors and making the code work, i like that stuff. Got a little stuck
+# on the attr_reader and looked it up in the rubyist book. Helped me a lot to solify my understanding
+# of the attr_reader and attr_writer concepts!
